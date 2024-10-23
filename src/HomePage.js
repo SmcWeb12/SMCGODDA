@@ -277,13 +277,13 @@ const HomePage = () => {
       <div>
         <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
         <p className="text-sm">
-          Address: Tesobathan, Sundarpahai, Godda, 814156, JH (India)
+          Address: Raj Kumar Nagar, Godda, 814133, JH (India)
         </p>
         <p className="text-sm">
-          Email: <a href="mailto:info@sulekha-mission.edu.in" className="hover:underline">sdmschoolteso@gmail.com</a>
+          Email: <a href="mailto:mukeshkapri11@gmail.com" className="hover:underline">mukeshkapri11@gmail.com</a>
         </p>
         <p className="text-sm">
-          Phone: <a href="tel:+911234567890" className="hover:underline">+91 62023 26183</a>
+          Phone: <a href="tel:+917004874159" className="hover:underline">+91 70048 74159</a>
         </p>
       </div>
     </div>

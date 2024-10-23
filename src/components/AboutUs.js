@@ -120,23 +120,28 @@ const AboutUs = () => {
         <div>
           <TextBlock>
             We provide a nurturing environment for students from
-            <HighlightText> Nursery </HighlightText> to
-            <HighlightText> 7th grade</HighlightText>,
-            located in <HighlightText> Tesobathan, Sundarpahari</HighlightText>.
+            <HighlightText> 11th </HighlightText> to
+            <HighlightText> 12th grade</HighlightText>,
+            located in <HighlightText> Raj Kumar Nagar, Godda </HighlightText>.
           </TextBlock>
           <TextBlock>
-            <HighlightText>Principal: Mr. Arvind Kapri</HighlightText> leads our institution with a vision for academic excellence.
+            <HighlightText>Principal: Mr. Mukesh Kapri</HighlightText> leads our institution with a vision for academic excellence.
           </TextBlock>
 
           <ContactDetails>
-            <ContactItem>📞 Contact Numbers: 8757040290 / 6202326183</ContactItem>
-            <ContactItem>📧 Email: sdmschoolteso@gmail.com</ContactItem>
+            <ContactItem>📞 Contact Numbers: +91 70048 74159 /+91 91356 59957 </ContactItem>
+            <ContactItem>📧 Email: mukeshkapri11@gmail.com</ContactItem>
           </ContactDetails>
         </div>
 
         {/* Google Maps iframe */}
+
+
+
+
+
         <MapIframe
-          src="https://maps.google.com/maps?q=Sulekha%20Devi%20Mission%20School%20Tesobathan%20Sundarpahari&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.4710822202287!2d87.2083000761082!3d24.813558647131213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f0f5e44c16513d%3A0x3b138a9170a5c39a!2sS.M.C%20GODDA%7BMATHEMATIC%20CLASSES%7D!5e0!3m2!1sen!2sin!4v1729702663795!5m2!1sen!2sin"
           allowFullScreen
           loading="lazy"
         ></MapIframe>
