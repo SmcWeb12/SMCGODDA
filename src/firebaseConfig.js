@@ -6,14 +6,14 @@ import { getFirestore } from 'firebase/firestore';
 
 // Your Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCa2MMycTIOKnoEFbmTlLl9egw62NP4Cas",
-  authDomain: "video-realcall.firebaseapp.com",
-  databaseURL: "https://video-realcall-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "video-realcall",
-  storageBucket: "video-realcall.appspot.com",
-  messagingSenderId: "317991905780",
-  appId: "1:317991905780:web:07513a02523e23ad65b1a1",
-  measurementId: "G-MNLQ5G11B3"
+   apiKey: "AIzaSyANFP_rkQbTajt3eChtbq4AOSNhduRHVHc",
+  authDomain: "smc-godda-25ec0.firebaseapp.com",
+  projectId: "smc-godda-25ec0",
+  storageBucket: "smc-godda-25ec0.appspot.com",
+  messagingSenderId: "952429152528",
+  measurementId: "G-8J2T5WBEPK",
+  databaseURL: "https://smc-godda-25ec0-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  appId: "1:952429152528:web:1a5a41a08ebb672c3c3d95",
 };
 
 // Initialize Firebase
