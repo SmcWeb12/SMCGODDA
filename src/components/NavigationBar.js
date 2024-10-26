@@ -21,6 +21,9 @@ const NavigationBar = () => {
           <li>
             <Link to="/developer-support" className="text-white hover:text-yellow-300">Developer Support</Link>
           </li>
+            <li>
+              <a href="https://smccommunity-73wv-git-main-smcweb12s-projects.vercel.app/" class="button">SMC COMMUNITY</a>
+          </li>
         </ul>
       </div>
     </nav>
