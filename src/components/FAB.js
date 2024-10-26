@@ -46,6 +46,8 @@ const FAB = () => {
           <button onClick={() => handleOptionClick('Contact Admin')}>Contact Admin</button>
           <button onClick={() => handleOptionClick('Contact Developer')}>Contact Developer</button>
           <button onClick={() => handleOptionClick('Logout')}>Logout</button>
+        <a href="https://smccommunity-73wv-git-main-smcweb12s-projects.vercel.app/" class="button">SMC COMMUNITY</a>
+
         </div>
       )}
     </div>
