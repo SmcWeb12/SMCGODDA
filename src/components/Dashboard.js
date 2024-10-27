@@ -312,8 +312,7 @@ const Dashboard = () => {
   <h3>Suggested Videos</h3>
   {videos.length > 0 ? (
     videos.map(video => (
-      <div key={video.id}>
-        <p style={{
+      <div key={video.id} style={{
                        color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
                       fontWeight: 'bold',
                       fontSize: '28px',
@@ -321,15 +320,16 @@ const Dashboard = () => {
                       padding: '10px', // Adds some padding inside the border
                       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
                       borderRadius: '10px' // Makes the border slightly rounded
+          }}>
+        <p style={{
+                       color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
+                      fontWeight: 'bold',
+                      fontSize: '28px',
           }}>{video.title}</p>
         <p style={{
                        color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
                       fontWeight: 'bold',
                       fontSize: '28px',
-                      border: '2px solid purple', // You can adjust the border color and size here
-                      padding: '10px', // Adds some padding inside the border
-                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
-                      borderRadius: '10px' // Makes the border slightly rounded
           }}>{video.description}</p>
         <a href={video.link} target="_blank" rel="noopener noreferrer">
           <button style={{
