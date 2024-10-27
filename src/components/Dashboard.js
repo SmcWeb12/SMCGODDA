@@ -293,20 +293,45 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Upcoming Classes */}
-          <div className="section">
-            <h3>Upcoming Classes</h3>
+<h3>Upcoming/Ongoing Classes</h3>
             {classes.length > 0 ? (
-              classes.map(cls => (
-                <div key={cls.id}>
-                  <p>{cls.subject}</p>
-                  <p>{new Date(cls.startTime).toLocaleString()}</p>
-                </div>
-              ))
+              classes.map(cls => {
+                const currentTime = new Date().getTime();
+                const startTime = new Date(cls.startTime).getTime();
+                const isOngoing = currentTime >= startTime;
+
+                return (
+                  <div style={{
+                    color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
+                    fontWeight: 'bold',
+                    fontSize: '28px',
+                    border: '2px solid purple', // You can adjust the border color and size here
+                    padding: '10px', // Adds some padding inside the border
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
+                    borderRadius: '10px' // Makes the border slightly rounded
+                  }} key={cls.id}>
+                   <h4 style={{ color: 'black' }}>{cls.subject}</h4>
+
+                    <p
+                    style={{
+                      color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
+                      fontWeight: 'bold',
+                      fontSize: '28px',
+                      border: '2px solid purple', // You can adjust the border color and size here
+                      padding: '10px', // Adds some padding inside the border
+                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
+                      borderRadius: '10px' // Makes the border slightly rounded
+                    }}
+                    >{isOngoing ? "Ongoing" : `Upcoming at ${cls.startTime}`}</p>
+                    {isOngoing && <a href={cls.jitsiLink}>Join Now</a>}
+                  </div>
+                );
+              })
             ) : (
-              <p>No upcoming classes scheduled.</p>
+              <p>No classes scheduled.</p>
             )}
           </div>
+
 
 <div className="section">
   <h3>Suggested Videos</h3>
