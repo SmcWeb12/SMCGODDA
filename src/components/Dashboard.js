@@ -312,19 +312,25 @@ const Dashboard = () => {
   <h3>Suggested Videos</h3>
   {videos.length > 0 ? (
     videos.map(video => (
-      <div key={video.id} className="video-card">
+      <div key={video.id}>
         <p style={{
-            color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
-            fontWeight: 'bold',
-            fontSize: '28px',
-            border: '2px solid purple', // You can adjust the border color and size here
-            padding: '10px', // Adds some padding inside the border
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
-            borderRadius: '10px' // Makes the border slightly rounded
-          }}>
-          {video.title}
-        </p>
-        <p>{video.description}</p>
+                       color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
+                      fontWeight: 'bold',
+                      fontSize: '28px',
+                      border: '2px solid purple', // You can adjust the border color and size here
+                      padding: '10px', // Adds some padding inside the border
+                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
+                      borderRadius: '10px' // Makes the border slightly rounded
+          }}>{video.title}</p>
+        <p style={{
+                       color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
+                      fontWeight: 'bold',
+                      fontSize: '28px',
+                      border: '2px solid purple', // You can adjust the border color and size here
+                      padding: '10px', // Adds some padding inside the border
+                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
+                      borderRadius: '10px' // Makes the border slightly rounded
+          }}>{video.description}</p>
         <a href={video.link} target="_blank" rel="noopener noreferrer">
           <button style={{
             backgroundColor: '#1E90FF',
@@ -345,22 +351,69 @@ const Dashboard = () => {
 </div>
 
 
-          {/* Homework Section */}
+       {/* Homework */}
           <div className="section">
-            <h3>Homework</h3>
-            {homework.length > 0 ? (
-              homework.map(hw => (
-                <div key={hw.id}>
-                  <p>{hw.title}</p>
-                  <p>{hw.description}</p>
-                </div>
-              ))
-            ) : (
-              <p>No homework assigned.</p>
-            )}
-          </div>
+          <h3>Homework</h3>
+{homework.length > 0 ? (
+  homework.map((item) => (
+    <div
+      key={item.id}
+      style={{
+        color: 'darkpurple', // Exact color code like '#4B0082' for dark purple
+        fontWeight: 'bold',
+        fontSize: '28px',
+        border: '2px solid purple', // Adjust the border color and size
+        padding: '10px', // Adds padding inside the border
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
+        borderRadius: '10px', // Makes the border slightly rounded
+        marginBottom: '20px', // Space between each homework item
+      }}
+    >
+      <p>{item.title}</p>
+      {item.photoURL && (
+        <div>
+          <img
+            src={item.photoURL}
+            alt={item.title} // Add alt text for accessibility
+            style={{
+              width: '100%', // Adjust width as needed
+              maxWidth: '300px', // Set a max width to maintain layout
+              borderRadius: '10px', // Optional: round the corners of the image
+              marginTop: '10px', // Optional: add space above the image
+            }}
+            className="w-full h-auto rounded-md"
+          />
+
+          {/* View Button */}
+          <button
+            onClick={() => window.open(item.photoURL, '_blank')} // Opens image in a new tab
+            style={{
+              backgroundColor: '#4B0082', // Dark purple background
+              color: 'white',
+              padding: '10px 20px',
+              borderRadius: '5px',
+              border: 'none',
+              cursor: 'pointer',
+              marginTop: '10px',
+              fontSize: '16px',
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = '#800080')} // Hover effect
+            onMouseLeave={(e) => (e.target.style.backgroundColor = '#4B0082')}
+          >
+            View Image
+          </button>
+        </div>
+      )}
+    </div>
+  ))
+) : (
+  <p>No homework assigned.</p>
+)}
+</div>
+
         </div>
       </div>
+      
     </div>
   );
 };
