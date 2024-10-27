@@ -308,32 +308,42 @@ const Dashboard = () => {
             )}
           </div>
 
-          {/* Suggested Videos */}
-          <div className="section">
-            <h3>Suggested Videos</h3>
-            {videos.length > 0 ? (
-              videos.map(video => (
-                <div key={video.id}>
-                  <h4>{video.title}</h4>
-                  <p>{video.description}</p>
-                  <a href={video.link} target="_blank" rel="noopener noreferrer">
-                    <button style={{
-                      backgroundColor: '#1E90FF',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '5px',
-                      padding: '10px 15px',
-                      cursor: 'pointer'
-                    }}>
-                      Watch Video
-                    </button>
-                  </a>
-                </div>
-              ))
-            ) : (
-              <p>No suggested videos available.</p>
-            )}
-          </div>
+<div className="section">
+  <h3>Suggested Videos</h3>
+  {videos.length > 0 ? (
+    videos.map(video => (
+      <div key={video.id} className="video-card">
+        <p style={{
+            color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
+            fontWeight: 'bold',
+            fontSize: '28px',
+            border: '2px solid purple', // You can adjust the border color and size here
+            padding: '10px', // Adds some padding inside the border
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
+            borderRadius: '10px' // Makes the border slightly rounded
+          }}>
+          {video.title}
+        </p>
+        <p>{video.description}</p>
+        <a href={video.link} target="_blank" rel="noopener noreferrer">
+          <button style={{
+            backgroundColor: '#1E90FF',
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px',
+            padding: '10px 15px',
+            cursor: 'pointer'
+          }}>
+            Watch Video
+          </button>
+        </a>
+      </div>
+    ))
+  ) : (
+    <p>No suggested videos available.</p>
+  )}
+</div>
+
 
           {/* Homework Section */}
           <div className="section">
