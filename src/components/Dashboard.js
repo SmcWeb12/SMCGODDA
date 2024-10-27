@@ -8,7 +8,6 @@ const Dashboard = () => {
   const [classes, setClasses] = useState([]);
   const [notices, setNotices] = useState([]);
   const [videos, setVideos] = useState([]);
-//   const [attendance, setAttendance] = useState("Present");
   const [greeting, setGreeting] = useState('');
   const [showWelcome, setShowWelcome] = useState(true);
   const [showGreeting, setShowGreeting] = useState(false);
@@ -18,13 +17,8 @@ const Dashboard = () => {
   const [showFinalMessage, setShowFinalMessage] = useState(false);
   
   useEffect(() => {
-    // const userId = auth.currentUser.uid;
-
-    // Fetch user details
     const fetchUserData = async () => {
-    //   const userDoc = doc(db, 'users', userId);
-    //   const userSnapshot = await getDoc(userDoc);
-      // You can use user data here if needed
+      // Placeholder for fetching user data if needed
     };
 
     fetchUserData();
@@ -101,7 +95,7 @@ const Dashboard = () => {
 
   return (
     <div>
-         <FAB />
+      <FAB />
       <style>
         {`
           .dashboard-container {
@@ -255,18 +249,17 @@ const Dashboard = () => {
                     <div key={hw.id}>
                       <p
                         style={{
-                          color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
+                          color: 'darkpurple',
                           fontWeight: 'bold',
                           fontSize: '28px',
-                          border: '2px solid purple', // You can adjust the border color and size here
-                          padding: '10px', // Adds some padding inside the border
-                          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
-                          borderRadius: '10px' // Makes the border slightly rounded
+                          border: '2px solid purple',
+                          padding: '10px',
+                          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+                          borderRadius: '10px'
                         }}
                       >
                         {hw.title}
                       </p>
-
                     </div>
                   ))
                 ) : (
@@ -283,65 +276,35 @@ const Dashboard = () => {
           </div>
         </div>
 
-
-
-        
         <div className="bottom-section">
           {/* Important Notices */}
           <div className="section">
-                <div className=''>    
-                    <h3>Important Notices</h3>
-                    {notices.length > 0 ? (
-                    notices.map(notice => (
-                        <div key={notice.id}>
-                        <p>{notice.message}</p>
-                        </div>
-                    ))
-                    ) : (
-                    <p>No notices at the moment.</p>
-                    )}
-
-                </div>   
+            <div className=''>    
+              <h3>Important Notices</h3>
+              {notices.length > 0 ? (
+                notices.map(notice => (
+                  <div key={notice.id}>
+                    <p>{notice.message}</p>
+                  </div>
+                ))
+              ) : (
+                <p>No notices at the moment.</p>
+              )}
+            </div>
           </div>
 
-          {/* Upcoming/Ongoing Classes */}
+          {/* Upcoming Classes */}
           <div className="section">
-            <h3>Upcoming/Ongoing Classes</h3>
+            <h3>Upcoming Classes</h3>
             {classes.length > 0 ? (
-              classes.map(cls => {
-                const currentTime = new Date().getTime();
-                const startTime = new Date(cls.startTime).getTime();
-                const isOngoing = currentTime >= startTime;
-
-                return (
-                  <div style={{
-                    color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
-                    fontWeight: 'bold',
-                    fontSize: '28px',
-                    border: '2px solid purple', // You can adjust the border color and size here
-                    padding: '10px', // Adds some padding inside the border
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
-                    borderRadius: '10px' // Makes the border slightly rounded
-                  }} key={cls.id}>
-                   <h4 style={{ color: 'black' }}>{cls.subject}</h4>
-
-                    <p
-                    style={{
-                      color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
-                      fontWeight: 'bold',
-                      fontSize: '28px',
-                      border: '2px solid purple', // You can adjust the border color and size here
-                      padding: '10px', // Adds some padding inside the border
-                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
-                      borderRadius: '10px' // Makes the border slightly rounded
-                    }}
-                    >{isOngoing ? "Ongoing" : `Upcoming at ${cls.startTime}`}</p>
-                    {isOngoing && <a href={cls.jitsiLink}>Join Now</a>}
-                  </div>
-                );
-              })
+              classes.map(cls => (
+                <div key={cls.id}>
+                  <p>{cls.subject}</p>
+                  <p>{new Date(cls.startTime).toLocaleString()}</p>
+                </div>
+              ))
             ) : (
-              <p>No classes scheduled.</p>
+              <p>No upcoming classes scheduled.</p>
             )}
           </div>
 
@@ -351,85 +314,43 @@ const Dashboard = () => {
             {videos.length > 0 ? (
               videos.map(video => (
                 <div key={video.id}>
-                  <p style={{
-                      color: 'darkpurple', // You can use an exact color code like '#4B0082' for dark purple
-                      fontWeight: 'bold',
-                      fontSize: '28px',
-                      border: '2px solid purple', // You can adjust the border color and size here
-                      padding: '10px', // Adds some padding inside the border
-                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
-                      borderRadius: '10px' // Makes the border slightly rounded
-                    }}>{video.title}</p>
+                  <h4>{video.title}</h4>
+                  <p>{video.description}</p>
+                  <a href={video.link} target="_blank" rel="noopener noreferrer">
+                    <button style={{
+                      backgroundColor: '#1E90FF',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '5px',
+                      padding: '10px 15px',
+                      cursor: 'pointer'
+                    }}>
+                      Watch Video
+                    </button>
+                  </a>
                 </div>
               ))
             ) : (
-              <p>No suggested videos at the moment.</p>
+              <p>No suggested videos available.</p>
             )}
           </div>
 
-          {/* Homework */}
+          {/* Homework Section */}
           <div className="section">
-          <h3>Homework</h3>
-{homework.length > 0 ? (
-  homework.map((item) => (
-    <div
-      key={item.id}
-      style={{
-        color: 'darkpurple', // Exact color code like '#4B0082' for dark purple
-        fontWeight: 'bold',
-        fontSize: '28px',
-        border: '2px solid purple', // Adjust the border color and size
-        padding: '10px', // Adds padding inside the border
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Shadow effect
-        borderRadius: '10px', // Makes the border slightly rounded
-        marginBottom: '20px', // Space between each homework item
-      }}
-    >
-      <p>{item.title}</p>
-      {item.photoURL && (
-        <div>
-          <img
-            src={item.photoURL}
-            alt={item.title} // Add alt text for accessibility
-            style={{
-              width: '100%', // Adjust width as needed
-              maxWidth: '300px', // Set a max width to maintain layout
-              borderRadius: '10px', // Optional: round the corners of the image
-              marginTop: '10px', // Optional: add space above the image
-            }}
-            className="w-full h-auto rounded-md"
-          />
-
-          {/* View Button */}
-          <button
-            onClick={() => window.open(item.photoURL, '_blank')} // Opens image in a new tab
-            style={{
-              backgroundColor: '#4B0082', // Dark purple background
-              color: 'white',
-              padding: '10px 20px',
-              borderRadius: '5px',
-              border: 'none',
-              cursor: 'pointer',
-              marginTop: '10px',
-              fontSize: '16px',
-            }}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = '#800080')} // Hover effect
-            onMouseLeave={(e) => (e.target.style.backgroundColor = '#4B0082')}
-          >
-            View Image
-          </button>
-        </div>
-      )}
-    </div>
-  ))
-) : (
-  <p>No homework assigned.</p>
-)}
-</div>
-
+            <h3>Homework</h3>
+            {homework.length > 0 ? (
+              homework.map(hw => (
+                <div key={hw.id}>
+                  <p>{hw.title}</p>
+                  <p>{hw.description}</p>
+                </div>
+              ))
+            ) : (
+              <p>No homework assigned.</p>
+            )}
+          </div>
         </div>
       </div>
-      
     </div>
   );
 };
