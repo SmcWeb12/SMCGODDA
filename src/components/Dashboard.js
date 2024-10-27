@@ -293,7 +293,9 @@ const Dashboard = () => {
             </div>
           </div>
 
-<h3>Upcoming/Ongoing Classes</h3>
+ {/* Upcoming/Ongoing Classes */}
+          <div className="section">
+            <h3>Upcoming/Ongoing Classes</h3>
             {classes.length > 0 ? (
               classes.map(cls => {
                 const currentTime = new Date().getTime();
@@ -331,7 +333,6 @@ const Dashboard = () => {
               <p>No classes scheduled.</p>
             )}
           </div>
-
 
 <div className="section">
   <h3>Suggested Videos</h3>
