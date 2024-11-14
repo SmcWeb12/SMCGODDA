@@ -11,7 +11,7 @@ import Slideshow from './components/SlideShow';
 import 'animate.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Testimonials from './components/Testimonials';
-
+import Popup from './components/Popup' 
 const HomePage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -101,6 +101,8 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+<Popup/>
+
       <nav className="sticky top-0 bg-blue-500 p-4 shadow-md z-10">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-white text-2xl font-bold">Specialist Mathematics Classes</div>
