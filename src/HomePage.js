@@ -4,12 +4,12 @@ import WelcomeLoading from './components/loading/WelcomeLoading';
 import LoadingLogin from './components/loading/LoadingLogin';
 import { db } from './firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
-import Modal from './components/Modal'; // Import the Modal component
+import Modal from './components/Modal';
 import EventCalendar from './components/EventCalander';
 import Slideshow from './components/SlideShow';
-import 'animate.css'; // Import Animate.css
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
-import Testimonials from './components/Testimonials'
+import 'animate.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import Testimonials from './components/Testimonials';
 
 const HomePage = () => {
   const [name, setName] = useState('');
@@ -20,9 +20,9 @@ const HomePage = () => {
   const [teachers, setTeachers] = useState([]);
   const [loadingTeachers, setLoadingTeachers] = useState(true);
   const [error, setError] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
-  const [selectedTeacher, setSelectedTeacher] = useState(null); // Selected teacher for contact
-  const [feedbackMessage, setFeedbackMessage] = useState(''); // Feedback message state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTeacher, setSelectedTeacher] = useState(null);
+  const [feedbackMessage, setFeedbackMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -32,7 +32,6 @@ const HomePage = () => {
       return;
     }
     setFeedbackMessage('Message sent successfully!');
-    // Reset fields
     setName('');
     setEmail('');
     setMessage('');
@@ -62,7 +61,7 @@ const HomePage = () => {
 
     fetchTeachers();
 
-    return () => clearTimeout(loadingTimeout); // Cleanup timeout
+    return () => clearTimeout(loadingTimeout);
   }, []);
 
   const handleLoginClick = () => {
@@ -74,13 +73,13 @@ const HomePage = () => {
   };
 
   const handleContactClick = useCallback((teacher) => {
-    setSelectedTeacher(teacher); // Set the selected teacher
-    setIsModalOpen(true); // Open the modal
+    setSelectedTeacher(teacher);
+    setIsModalOpen(true);
   }, []);
 
   const handleModalClose = () => {
-    setIsModalOpen(false); // Close the modal
-    setSelectedTeacher(null); // Reset the selected teacher
+    setIsModalOpen(false);
+    setSelectedTeacher(null);
   };
 
   if (loadingLogin) {
@@ -111,10 +110,11 @@ const HomePage = () => {
             <li>
               <Link to="/about-us" className="text-white hover:text-yellow-300">About Us</Link>
             </li>
-              <li>
-        <a href="https://smcmathquiz.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
-          MatheQuiz
-        </a>
+            <li>
+              <a href="https://smcmathquiz.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
+                MathQuiz
+              </a>
+            </li>
             <li>
               <Link to="/courses" className="text-white hover:text-yellow-300">Courses</Link>
             </li>
@@ -125,7 +125,6 @@ const HomePage = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <header className="relative bg-cover bg-center animate__animated animate__fadeIn" style={{ backgroundImage: `url('your-image.jpg')` }}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-opacity-75"></div>
         <div className="relative z-10 text-white text-center py-20">
@@ -144,7 +143,6 @@ const HomePage = () => {
 
       <Slideshow />
 
-      {/* About Us Section */}
       <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
           <h2 className="text-4xl font-semibold mb-6 text-center">About Us</h2>
@@ -157,7 +155,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
       <section className="py-12 px-4 bg-gray-100">
         <div className="container mx-auto">
           <h2 className="text-4xl font-semibold mb-6 text-center">Why Choose Specialist Mathematics Classes?</h2>
@@ -181,7 +178,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Teachers Section */}
       <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
           <h2 className="text-4xl font-semibold mb-6 text-center">Meet Our Teachers</h2>
@@ -248,78 +244,63 @@ const HomePage = () => {
         </Modal>
       )}
 
-      {/* Event Calendar */}
       <EventCalendar />
       <Testimonials />
 
+      <footer className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-8">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+              <h4 className="font-semibold text-lg mb-4">About Us</h4>
+              <p className="text-sm">
+                Specialist Mathematics Classes is committed to providing high-quality education to empower young minds.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="/" className="hover:underline">Home</a></li>
+                <li><a href="/about" className="hover:underline">About Us</a></li>
+                <li><a href="/admissions" className="hover:underline">Admissions</a></li>
+                <li><a href="/contact" className="hover:underline">Contact Us</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
+              <p className="text-sm">
+                Address: Raj Kumar Nagar, Godda, 814133, JH (India)
+              </p>
+              <p className="text-sm">
+                Email: <a href="mailto:mukeshkapri11@gmail.com" className="hover:underline">mukeshkapri11@gmail.com</a>
+              </p>
+              <p className="text-sm">
+                Phone: <a href="tel:+917004874159" className="hover:underline">+91 70048 74159</a>
+              </p>
+            </div>
+          </div>
 
-{/* Footer */}
-<footer className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-8">
-  <div className="container mx-auto px-4">
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-      
-      {/* About Section */}
-      <div>
-        <h4 className="font-semibold text-lg mb-4">About Us</h4>
-        <p className="text-sm">
-          Specialist Mathematics Classes is committed to providing high-quality education to empower young minds. Our mission is to nurture students for a bright future.
-        </p>
-      </div>
-      
-      {/* Quick Links */}
-      <div>
-        <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
-        <ul className="space-y-2 text-sm">
-          <li><a href="/" className="hover:underline">Home</a></li>
-          <li><a href="/about" className="hover:underline">About Us</a></li>
-          <li><a href="/admissions" className="hover:underline">Admissions</a></li>
-          <li><a href="/contact" className="hover:underline">Contact Us</a></li>
-        </ul>
-      </div>
-      
-      {/* Contact Info */}
-      <div>
-        <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
-        <p className="text-sm">
-          Address: Raj Kumar Nagar, Godda, 814133, JH (India)
-        </p>
-        <p className="text-sm">
-          Email: <a href="mailto:mukeshkapri11@gmail.com" className="hover:underline">mukeshkapri11@gmail.com</a>
-        </p>
-        <p className="text-sm">
-          Phone: <a href="tel:+917004874159" className="hover:underline">+91 70048 74159</a>
-        </p>
-      </div>
-    </div>
+          <div className="mt-8 flex justify-center space-x-6">
+            <a href="https://www.facebook.com" className="text-white hover:text-gray-300">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.twitter.com" className="text-white hover:text-gray-300">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com" className="text-white hover:text-gray-300">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com" className="text-white hover:text-gray-300">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
 
-    {/* Social Media Icons */}
-    <div className="mt-8 flex justify-center space-x-6">
-      <a href="https://www.facebook.com" className="text-white hover:text-gray-300">
-        <i className="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://www.twitter.com" className="text-white hover:text-gray-300">
-        <i className="fab fa-twitter"></i>
-      </a>
-      <a href="https://www.instagram.com" className="text-white hover:text-gray-300">
-        <i className="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com" className="text-white hover:text-gray-300">
-        <i className="fab fa-linkedin-in"></i>
-      </a>
-    </div>
-
-    {/* Footer Bottom */}
-    <div className="mt-8 border-t border-gray-300 pt-4 text-center">
-      <p className="text-sm">&copy; 2024 Specialist Mathematics Classes. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-{/* Modal */}
-{isModalOpen && (
-        <Modal teacher={selectedTeacher} onClose={handleModalClose} />
-      )}
+          <div className="mt-8 border-t border-gray-300 pt-4 text-center">
+            <p className="text-sm">&copy; 2024 Specialist Mathematics Classes. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
+
 export default HomePage;
