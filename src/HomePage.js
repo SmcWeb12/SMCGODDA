@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaUsers } from 'react-icons/fa'; // Importing React Icons
 import WelcomeLoading from './components/loading/WelcomeLoading';
 import LoadingLogin from './components/loading/LoadingLogin';
 import { db } from './firebaseConfig';
@@ -114,7 +115,8 @@ const HomePage = () => {
               <a href="https://smcmathquiz.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
                 MathQuiz
               </a>
-             <li>
+            </li>
+            <li>
               <a href="https://smc-gk-gs-godda-izvcuorku-smcweb12s-projects.vercel.app" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
                 GkGs
               </a>
@@ -135,13 +137,13 @@ const HomePage = () => {
           <h1 className="text-5xl md:text-6xl font-bold animate__animated animate__bounce">Welcome to Specialist Mathematics Classes</h1>
           <p className="mt-4 text-lg md:text-xl animate__animated animate__fadeInUp">Nurturing young minds for a brighter future</p>
           <button onClick={handleLoginClick} className="mt-8 bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
-            Join Us Today
+            Dashboard
           </button>
-          <Link to="/about-us">
+          <a href="https://akmxcommit.vercel.app" target="_blank" rel="noopener noreferrer">
             <button className="mt-8 ml-4 bg-white text-blue-500 font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-200 transition duration-300">
-              Learn More
+              Community
             </button>
-          </Link>
+          </a>
         </div>
       </header>
 
@@ -183,7 +185,7 @@ const HomePage = () => {
       </section>
 
       <section className="py-12 px-4 bg-white">
-        <div className="container mx-auto">
+                <div className="container mx-auto">
           <h2 className="text-4xl font-semibold mb-6 text-center">Meet Our Teachers</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {teachers.map((teacher) => (
@@ -285,16 +287,16 @@ const HomePage = () => {
 
           <div className="mt-8 flex justify-center space-x-6">
             <a href="https://www.facebook.com" className="text-white hover:text-gray-300">
-              <i className="fab fa-facebook-f"></i>
+              <FaFacebookF />
             </a>
             <a href="https://www.twitter.com" className="text-white hover:text-gray-300">
-              <i className="fab fa-twitter"></i>
+              <FaTwitter />
             </a>
             <a href="https://www.instagram.com" className="text-white hover:text-gray-300">
-              <i className="fab fa-instagram"></i>
+              <FaInstagram />
             </a>
             <a href="https://www.linkedin.com" className="text-white hover:text-gray-300">
-              <i className="fab fa-linkedin-in"></i>
+              <FaLinkedinIn />
             </a>
           </div>
 
