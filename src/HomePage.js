@@ -111,9 +111,10 @@ const HomePage = () => {
             <li>
               <Link to="/about-us" className="text-white hover:text-yellow-300">About Us</Link>
             </li>
-             <li>
-                <Link to="/mathquiz" className="https://smcmathquiz.vercel.app/home">mathquiz</Link>
-             </li>
+              <li>
+        <a href="https://smcmathquiz.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
+          MatheQuiz
+        </a>
             <li>
               <Link to="/courses" className="text-white hover:text-yellow-300">Courses</Link>
             </li>
