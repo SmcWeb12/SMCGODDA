@@ -102,7 +102,7 @@ const Login = () => {
             </button>
           </form>
           <p className="text-center mt-4">
-            Having trouble logging in? <a href="/https://www-student-signup-com.netlify.app/">signup</a>
+            Having trouble logging in? <a href="https://www-student-signup-com.netlify.app/">signup</a>
           </p>
         </div>
       </div>
