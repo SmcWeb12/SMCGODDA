@@ -108,7 +108,7 @@ const HomePage = () => {
       {/* Navigation */}
       <nav className="sticky top-0 bg-blue-500 p-4 shadow-md z-10">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="text-white text-2xl font-bold">Specialist Mathematics Classes</div>
+          <div className="text-white text-2xl font-bold">Specialist Mathematics Classes </div>
           <ul className="flex space-x-4">
             <li>
               <Link to="/" className="text-white hover:text-yellow-300">Home</Link>
