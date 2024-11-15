@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaBars, FaTimes } from 'react-icons/fa'; 
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import WelcomeLoading from './components/loading/WelcomeLoading';
 import LoadingLogin from './components/loading/LoadingLogin';
 import { db } from './firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 import Modal from './components/Modal';
-import EventCalendar from './components/EventCalander';
-import Slideshow from './components/SlideShow';
-import 'animate.css';
-import Testimonials from './components/Testimonials';
+import EventCalendar from './components/EventCalendar';
+import Slideshow from './components/Slideshow';
 import Popup from './components/Popup';
+import Testimonials from './components/Testimonials';
+import 'animate.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import './styles/HomePage.css'; // External styles for additional design customizations
 
 const HomePage = () => {
   const [name, setName] = useState('');
@@ -24,7 +26,6 @@ const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [feedbackMessage, setFeedbackMessage] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -103,21 +104,12 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <Popup />
-      {/* NAVBAR */}
+
+      {/* Navigation */}
       <nav className="sticky top-0 bg-blue-500 p-4 shadow-md z-10">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="text-white text-2xl font-bold">Specialist Mathematics</div>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-white focus:outline-none"
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-          <ul
-            className={`${
-              menuOpen ? 'block' : 'hidden'
-            } md:flex space-y-4 md:space-y-0 md:space-x-4 absolute md:relative bg-blue-500 md:bg-transparent w-full md:w-auto top-16 md:top-0 left-0 md:left-auto p-4 md:p-0`}
-          >
+          <div className="text-white text-2xl font-bold">Specialist Mathematics Classes</div>
+          <ul className="flex space-x-4">
             <li>
               <Link to="/" className="text-white hover:text-yellow-300">Home</Link>
             </li>
@@ -125,12 +117,22 @@ const HomePage = () => {
               <Link to="/about-us" className="text-white hover:text-yellow-300">About Us</Link>
             </li>
             <li>
-              <a href="https://smcmathquiz.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
+              <a
+                href="https://smcmathquiz.vercel.app/home"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300"
+              >
                 MathQuiz
               </a>
             </li>
             <li>
-              <a href="https://https://smc-gk-gs-godda.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
+              <a
+                href="https://https://smc-gk-gs-godda.vercel.app/home"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-yellow-300"
+              >
                 GkGs
               </a>
             </li>
@@ -144,37 +146,180 @@ const HomePage = () => {
         </div>
       </nav>
 
-      {/* HERO SECTION */}
+      {/* Hero Section */}
       <header
-        className="relative bg-cover bg-center text-center text-white py-20"
-        style={{ backgroundImage: `url('your-image.jpg')` }}
+        className="relative bg-cover bg-center animate__animated animate__fadeIn"
+        style={{ backgroundImage: `url('/path-to-your-image.jpg')` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-80"></div>
-        <div className="relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold animate__animated animate__bounce">Welcome</h1>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-opacity-75"></div>
+        <div className="relative z-10 text-white text-center py-20 px-4">
+          <h1 className="text-5xl md:text-6xl font-bold animate__animated animate__bounce">
+            Welcome to Specialist Mathematics Classes
+          </h1>
           <p className="mt-4 text-lg md:text-xl animate__animated animate__fadeInUp">
             Nurturing young minds for a brighter future
           </p>
-          <div className="mt-8 flex justify-center gap-4">
+          <div className="mt-8 flex justify-center flex-wrap gap-4">
             <button
               onClick={handleLoginClick}
               className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-6 py-3 rounded-lg transition duration-300"
             >
               Dashboard
             </button>
-            <a href="https://akmxcommit.vercel.app" target="_blank" rel="noopener noreferrer">
-              <button className="bg-white text-blue-500 font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-200 transition duration-300">
-                Community
-              </button>
+            <a
+              href="https://akmxcommit.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-blue-500 font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-200 transition duration-300"
+            >
+              Community
             </a>
           </div>
         </div>
       </header>
-      
-      {/* Additional Components */}
+
+      {/* Slideshow */}
       <Slideshow />
-      <Testimonials />
+
+      {/* About Section */}
+      <section className="py-12 px-4 bg-white">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-semibold mb-6 text-center">About Us</h2>
+          <p className="text-lg leading-relaxed text-gray-700 text-center max-w-2xl mx-auto">
+            At Specialist Mathematics Classes, we foster a holistic learning environment where students excel
+            academically and grow personally. Our experienced faculty is dedicated to quality education, ensuring each
+            student reaches their full potential.
+          </p>
+        </div>
+      </section>
+
+      {/* Teachers Section */}
+      <section className="py-12 px-4 bg-gray-100">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-semibold mb-6 text-center">Meet Our Teachers</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {teachers.map((teacher) => (
+              <div
+                key={teacher.id}
+                className="bg-gray-100 shadow p-6 rounded-lg text-center transition-transform transform hover:scale-105"
+              >
+                <h3 className="text-xl font-semibold mb-2">{teacher.name}</h3>
+                <p className="text-gray-600">{teacher.subject}</p>
+                <button
+                  onClick={() => handleContactClick(teacher)}
+                  className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-400 transition duration-300"
+                >
+                  Contact
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {isModalOpen && (
+        <Modal onClose={handleModalClose}>
+          <h2 className="text-xl font-bold mb-4">Contact {selectedTeacher.name}</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700">Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full border rounded py-2 px-3"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full border rounded py-2 px-3"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700">Message</label>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full border rounded py-2 px-3"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-400 transition duration-300"
+            >
+              Send Message
+            </button>
+            {feedbackMessage && <div className="mt-4 text-green-500">{feedbackMessage}</div>}
+          </form>
+        </Modal>
+      )}
+
+      {/* Event Calendar */}
       <EventCalendar />
+
+      {/* Testimonials */}
+      <Testimonials />
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-8">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+              <h4 className="font-semibold text-lg mb-4">About Us</h4>
+              <p className="text-sm">
+                Specialist Mathematics Classes is committed to providing high-quality education to empower young minds.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="/" className="hover:underline">Home</a></li>
+                <li><a href="/about" className="hover:underline">About Us</a></li>
+                <li><a href="/admissions" className="hover:underline">Admissions</a></li>
+                <li><a href="/contact" className="hover:underline">Contact Us</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
+              <p className="text-sm">
+                Address: Raj Kumar Nagar, Godda, 814133, JH (India)
+              </p>
+              <p className="text-sm">
+                Email: <a href="mailto:mukeshkapri11@gmail.com" className="hover:underline">mukeshkapri11@gmail.com</a>
+              </p>
+              <p className="text-sm">
+                Phone: <a href="tel:+917004874159" className="hover:underline">+91 70048 74159</a>
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 flex justify-center space-x-6">
+            <a href="https://www.facebook.com" className="text-white hover:text-gray-300">
+              <FaFacebookF />
+            </a>
+            <a href="https://www.twitter.com" className="text-white hover:text-gray-300">
+              <FaTwitter />
+            </a>
+            <a href="https://www.instagram.com" className="text-white hover:text-gray-300">
+              <FaInstagram />
+            </a>
+            <a href="https://www.linkedin.com" className="text-white hover:text-gray-300">
+              <FaLinkedinIn />
+            </a>
+          </div>
+
+          <div className="mt-8 border-t border-gray-300 pt-4 text-center">
+            <p className="text-sm">&copy; 2024 Specialist Mathematics Classes. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
