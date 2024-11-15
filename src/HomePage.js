@@ -130,7 +130,7 @@ const HomePage = () => {
               </a>
             </li>
             <li>
-              <a href="https://smc-gk-gs-godda-izvcuorku-smcweb12s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
+              <a href="https://https://smc-gk-gs-godda.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">
                 GkGs
               </a>
             </li>
