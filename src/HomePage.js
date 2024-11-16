@@ -1,18 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import WelcomeLoading from './components/loading/WelcomeLoading';
 import LoadingLogin from './components/loading/LoadingLogin';
 import { db } from './firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
-import Modal from './components/Modal';
-import EventCalendar from './components/EventCalendar';
-import Slideshow from './components/Slideshow';
-import Popup from './components/Popup';
-import Testimonials from './components/Testimonials';
-import 'animate.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import './styles/HomePage.css'; // External styles for additional design customizations
+import Modal from './components/Modal'; // Import the Modal component
+import EventCalendar from './components/EventCalander';
+import Slideshow from './components/SlideShow';
+import 'animate.css'; // Import Animate.css
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
+import Testimonials from './components/Testimonials'
 
 const HomePage = () => {
   const [name, setName] = useState('');
@@ -23,9 +20,9 @@ const HomePage = () => {
   const [teachers, setTeachers] = useState([]);
   const [loadingTeachers, setLoadingTeachers] = useState(true);
   const [error, setError] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTeacher, setSelectedTeacher] = useState(null);
-  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [selectedTeacher, setSelectedTeacher] = useState(null); // Selected teacher for contact
+  const [feedbackMessage, setFeedbackMessage] = useState(''); // Feedback message state
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -35,6 +32,7 @@ const HomePage = () => {
       return;
     }
     setFeedbackMessage('Message sent successfully!');
+    // Reset fields
     setName('');
     setEmail('');
     setMessage('');
@@ -64,7 +62,7 @@ const HomePage = () => {
 
     fetchTeachers();
 
-    return () => clearTimeout(loadingTimeout);
+    return () => clearTimeout(loadingTimeout); // Cleanup timeout
   }, []);
 
   const handleLoginClick = () => {
@@ -76,13 +74,13 @@ const HomePage = () => {
   };
 
   const handleContactClick = useCallback((teacher) => {
-    setSelectedTeacher(teacher);
-    setIsModalOpen(true);
+    setSelectedTeacher(teacher); // Set the selected teacher
+    setIsModalOpen(true); // Open the modal
   }, []);
 
   const handleModalClose = () => {
-    setIsModalOpen(false);
-    setSelectedTeacher(null);
+    setIsModalOpen(false); // Close the modal
+    setSelectedTeacher(null); // Reset the selected teacher
   };
 
   if (loadingLogin) {
@@ -101,11 +99,7 @@ const HomePage = () => {
     return <div className="text-center text-red-500">{error}</div>;
   }
 
-  return (
-    <div className="min-h-screen bg-gray-100">
-      <Popup />
-
-      {/* Navigation */}
+   {/* Navigation */}
       <nav className="sticky top-0 bg-blue-500 p-4 shadow-md z-10">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-white text-2xl font-bold">Specialist Mathematics Classes </div>
@@ -147,62 +141,68 @@ const HomePage = () => {
       </nav>
 
       {/* Hero Section */}
-      <header
-        className="relative bg-cover bg-center animate__animated animate__fadeIn"
-        style={{ backgroundImage: `url('/path-to-your-image.jpg')` }}
-      >
+      <header className="relative bg-cover bg-center animate__animated animate__fadeIn" style={{ backgroundImage: `url('your-image.jpg')` }}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-opacity-75"></div>
-        <div className="relative z-10 text-white text-center py-20 px-4">
-          <h1 className="text-5xl md:text-6xl font-bold animate__animated animate__bounce">
-            Welcome to Specialist Mathematics Classes
-          </h1>
-          <p className="mt-4 text-lg md:text-xl animate__animated animate__fadeInUp">
-            Nurturing young minds for a brighter future
-          </p>
-          <div className="mt-8 flex justify-center flex-wrap gap-4">
-            <button
-              onClick={handleLoginClick}
-              className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-6 py-3 rounded-lg transition duration-300"
-            >
-              Dashboard
+        <div className="relative z-10 text-white text-center py-20">
+          <h1 className="text-5xl md:text-6xl font-bold animate__animated animate__bounce">Welcome to Specialist Mathematics Classes</h1>
+          <p className="mt-4 text-lg md:text-xl animate__animated animate__fadeInUp">Nurturing young minds for a brighter future</p>
+          <button onClick={handleLoginClick} className="mt-8 bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
+            Join Us Today
+          </button>
+          <Link to="/about-us">
+            <button className="mt-8 ml-4 bg-white text-blue-500 font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-200 transition duration-300">
+              Learn More
             </button>
-            <a
-              href="https://akmxcommit.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-blue-500 font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-200 transition duration-300"
-            >
-              Community
-            </a>
-          </div>
+          </Link>
         </div>
       </header>
 
-      {/* Slideshow */}
       <Slideshow />
 
-      {/* About Section */}
+      {/* About Us Section */}
       <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
           <h2 className="text-4xl font-semibold mb-6 text-center">About Us</h2>
           <p className="text-lg leading-relaxed text-gray-700 text-center max-w-2xl mx-auto">
-            At Specialist Mathematics Classes, we foster a holistic learning environment where students excel
-            academically and grow personally. Our experienced faculty is dedicated to quality education, ensuring each
-            student reaches their full potential.
+            At Specialist Mathematics Classes, we believe in fostering a holistic learning environment where students
+            excel academically and grow personally. Our experienced faculty is dedicated to providing 
+            quality education, ensuring each child reaches their full potential. We offer a diverse 
+            curriculum that promotes critical thinking, creativity, and collaboration.
           </p>
         </div>
       </section>
 
-      {/* Teachers Section */}
+      {/* Why Choose Us Section */}
       <section className="py-12 px-4 bg-gray-100">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-semibold mb-6 text-center">Why Choose Specialist Mathematics Classes?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white shadow p-6 rounded-lg text-center transition-transform transform hover:scale-105">
+              <span className="text-blue-500 text-4xl"><i className="fas fa-chalkboard-teacher"></i></span>
+              <h3 className="text-xl font-semibold mt-4">Experienced Teachers</h3>
+              <p className="mt-2 text-gray-600">Our educators are dedicated to nurturing students' talents.</p>
+            </div>
+            <div className="bg-white shadow p-6 rounded-lg text-center transition-transform transform hover:scale-105">
+              <span className="text-blue-500 text-4xl"><i className="fas fa-book"></i></span>
+              <h3 className="text-xl font-semibold mt-4">Comprehensive Curriculum</h3>
+              <p className="mt-2 text-gray-600">A well-rounded curriculum that covers all aspects of learning.</p>
+            </div>
+            <div className="bg-white shadow p-6 rounded-lg text-center transition-transform transform hover:scale-105">
+              <span className="text-blue-500 text-4xl"><i className="fas fa-users"></i></span>
+              <h3 className="text-xl font-semibold mt-4">Community Focused</h3>
+              <p className="mt-2 text-gray-600">We emphasize the importance of community and collaboration.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Teachers Section */}
+      <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
           <h2 className="text-4xl font-semibold mb-6 text-center">Meet Our Teachers</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {teachers.map((teacher) => (
-              <div
-                key={teacher.id}
-                className="bg-gray-100 shadow p-6 rounded-lg text-center transition-transform transform hover:scale-105"
-              >
+              <div key={teacher.id} className="bg-gray-100 shadow p-6 rounded-lg text-center transition-transform duration-300 transform hover:scale-105">
                 <h3 className="text-xl font-semibold mb-2">{teacher.name}</h3>
                 <p className="text-gray-600">{teacher.subject}</p>
                 <button
@@ -256,72 +256,85 @@ const HomePage = () => {
             >
               Send Message
             </button>
-            {feedbackMessage && <div className="mt-4 text-green-500">{feedbackMessage}</div>}
+            {feedbackMessage && (
+              <div className="mt-4 text-green-500">{feedbackMessage}</div>
+            )}
           </form>
         </Modal>
       )}
 
       {/* Event Calendar */}
       <EventCalendar />
-
-      {/* Testimonials */}
       <Testimonials />
 
-      {/* Footer */}
-      <footer className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <div>
-              <h4 className="font-semibold text-lg mb-4">About Us</h4>
-              <p className="text-sm">
-                Specialist Mathematics Classes is committed to providing high-quality education to empower young minds.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/" className="hover:underline">Home</a></li>
-                <li><a href="/about" className="hover:underline">About Us</a></li>
-                <li><a href="/admissions" className="hover:underline">Admissions</a></li>
-                <li><a href="/contact" className="hover:underline">Contact Us</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
-              <p className="text-sm">
-                Address: Raj Kumar Nagar, Godda, 814133, JH (India)
-              </p>
-              <p className="text-sm">
-                Email: <a href="mailto:mukeshkapri11@gmail.com" className="hover:underline">mukeshkapri11@gmail.com</a>
-              </p>
-              <p className="text-sm">
-                Phone: <a href="tel:+917004874159" className="hover:underline">+91 70048 74159</a>
-              </p>
-            </div>
-          </div>
 
-          <div className="mt-8 flex justify-center space-x-6">
-            <a href="https://www.facebook.com" className="text-white hover:text-gray-300">
-              <FaFacebookF />
-            </a>
-            <a href="https://www.twitter.com" className="text-white hover:text-gray-300">
-              <FaTwitter />
-            </a>
-            <a href="https://www.instagram.com" className="text-white hover:text-gray-300">
-              <FaInstagram />
-            </a>
-            <a href="https://www.linkedin.com" className="text-white hover:text-gray-300">
-              <FaLinkedinIn />
-            </a>
-          </div>
+{/* Footer */}
+<footer className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-8">
+  <div className="container mx-auto px-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      
+      {/* About Section */}
+      <div>
+        <h4 className="font-semibold text-lg mb-4">About Us</h4>
+        <p className="text-sm">
+          Specialist Mathematics Classes is committed to providing high-quality education to empower young minds. Our mission is to nurture students for a bright future.
+        </p>
+      </div>
+      
+      {/* Quick Links */}
+      <div>
+        <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+        <ul className="space-y-2 text-sm">
+          <li><a href="/" className="hover:underline">Home</a></li>
+          <li><a href="/about" className="hover:underline">About Us</a></li>
+          <li><a href="/admissions" className="hover:underline">Admissions</a></li>
+          <li><a href="/contact" className="hover:underline">Contact Us</a></li>
+        </ul>
+      </div>
+      
+      {/* Contact Info */}
+      <div>
+        <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
+        <p className="text-sm">
+          Address: Raj Kumar Nagar, Godda, 814133, JH (India)
+        </p>
+        <p className="text-sm">
+          Email: <a href="mailto:mukeshkapri11@gmail.com" className="hover:underline">mukeshkapri11@gmail.com</a>
+        </p>
+        <p className="text-sm">
+          Phone: <a href="tel:+917004874159" className="hover:underline">+91 70048 74159</a>
+        </p>
+      </div>
+    </div>
 
-          <div className="mt-8 border-t border-gray-300 pt-4 text-center">
-            <p className="text-sm">&copy; 2024 Specialist Mathematics Classes. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+    {/* Social Media Icons */}
+    <div className="mt-8 flex justify-center space-x-6">
+      <a href="https://www.facebook.com" className="text-white hover:text-gray-300">
+        <i className="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.twitter.com" className="text-white hover:text-gray-300">
+        <i className="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.instagram.com" className="text-white hover:text-gray-300">
+        <i className="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com" className="text-white hover:text-gray-300">
+        <i className="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+
+    {/* Footer Bottom */}
+    <div className="mt-8 border-t border-gray-300 pt-4 text-center">
+      <p className="text-sm">&copy; 2024 Specialist Mathematics Classes. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+{/* Modal */}
+{isModalOpen && (
+        <Modal teacher={selectedTeacher} onClose={handleModalClose} />
+      )}
     </div>
   );
 };
-
 export default HomePage;
