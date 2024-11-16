@@ -32,6 +32,7 @@ const HomePage = () => {
       return;
     }
     setFeedbackMessage('Message sent successfully!');
+
     // Reset fields
     setName('');
     setEmail('');
@@ -55,6 +56,11 @@ const HomePage = () => {
         setLoadingTeachers(false);
       }
     };
+const [menuOpen, setMenuOpen] = useState(false);
+
+const handleMenuToggle = () => {
+  setMenuOpen(!menuOpen);
+};
 
     const loadingTimeout = setTimeout(() => {
       setLoading(false);
