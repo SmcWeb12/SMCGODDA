@@ -99,10 +99,11 @@ const HomePage = () => {
     return <div className="text-center text-red-500">{error}</div>;
   }
 
-   {/* Navigation */}
+  return (
+    <div className="min-h-screen bg-gray-100">
       <nav className="sticky top-0 bg-blue-500 p-4 shadow-md z-10">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="text-white text-2xl font-bold">Specialist Mathematics Classes </div>
+          <div className="text-white text-2xl font-bold">Specialist Mathematics Classes</div>
           <ul className="flex space-x-4">
             <li>
               <Link to="/" className="text-white hover:text-yellow-300">Home</Link>
@@ -110,26 +111,9 @@ const HomePage = () => {
             <li>
               <Link to="/about-us" className="text-white hover:text-yellow-300">About Us</Link>
             </li>
-            <li>
-              <a
-                href="https://smcmathquiz.vercel.app/home"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-300"
-              >
-                MathQuiz
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://https://smc-gk-gs-godda.vercel.app/home"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-300"
-              >
-                GkGs
-              </a>
-            </li>
+             <li>
+                <Link to="/mathquiz" className="https://smcmathquiz.vercel.app/home">mathquiz</Link>
+             </li>
             <li>
               <Link to="/courses" className="text-white hover:text-yellow-300">Courses</Link>
             </li>
