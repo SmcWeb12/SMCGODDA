@@ -99,50 +99,89 @@ const HomePage = () => {
     return <div className="text-center text-red-500">{error}</div>;
   }
 
-  return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="sticky top-0 bg-blue-500 p-4 shadow-md z-10">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-white text-2xl font-bold">Specialist Mathematics Classes</div>
-          <ul className="flex space-x-4">
-            <li>
-              <Link to="/" className="text-white hover:text-yellow-300">Home</Link>
-            </li>
-            <li>
-              <Link to="/about-us" className="text-white hover:text-yellow-300">About Us</Link>
-            </li>
-              <li>
-                <a href="https://smcmathquiz.vercel.app/home" target="_blank">mathQuiz</a>
-             </li>
-             <li>
-                 <a href="https://smc-gk-gs-godda-izvcuorku-smcweb12s-projects.vercel.app/" target="_blank">GK-GS</a>
-             </li>
-            <li>
-              <Link to="/courses" className="text-white hover:text-yellow-300">Courses</Link>
-            </li>
-            <li>
-              <button onClick={handleLoginClick} className="text-white hover:text-yellow-300">Login</button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <header className="relative bg-cover bg-center animate__animated animate__fadeIn" style={{ backgroundImage: `url('your-image.jpg')` }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-opacity-75"></div>
-        <div className="relative z-10 text-white text-center py-20">
-          <h1 className="text-5xl md:text-6xl font-bold animate__animated animate__bounce">Welcome to Specialist Mathematics Classes</h1>
-          <p className="mt-4 text-lg md:text-xl animate__animated animate__fadeInUp">Nurturing young minds for a brighter future</p>
-          <button onClick={handleLoginClick} className="mt-8 bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
-            Join Us Today
+ return (
+  <div className="min-h-screen bg-gray-100">
+    <nav className="sticky top-0 bg-blue-500 p-4 shadow-md z-10">
+      <div className="container mx-auto flex justify-between items-center">
+        <div className="text-white text-2xl font-bold">Specialist Mathematics Classes</div>
+        {/* Mobile responsive menu */}
+        <ul className="hidden md:flex space-x-4">
+          <li>
+            <Link to="/" className="text-white hover:text-yellow-300">Home</Link>
+          </li>
+          <li>
+            <Link to="/about-us" className="text-white hover:text-yellow-300">About Us</Link>
+          </li>
+          <li>
+            <a href="https://smcmathquiz.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">Math Quiz</a>
+          </li>
+          <li>
+            <a href="https://smc-gk-gs-godda.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300">GK-GS</a>
+          </li>
+          <li>
+            <Link to="/courses" className="text-white hover:text-yellow-300">Courses</Link>
+          </li>
+          <li>
+            <button onClick={handleLoginClick} className="text-white hover:text-yellow-300">Login</button>
+          </li>
+        </ul>
+        {/* Mobile menu button */}
+        <div className="md:hidden">
+          <button onClick={handleMenuToggle} className="text-white">
+            {/* Hamburger Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
           </button>
-          <Link to="/about-us">
-            <button className="mt-8 ml-4 bg-white text-blue-500 font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-200 transition duration-300">
-              Learn More
-            </button>
-          </Link>
         </div>
-      </header>
+      </div>
+    </nav>
+
+    {/* Hero Section */}
+    <header className="relative bg-cover bg-center animate__animated animate__fadeIn" style={{ backgroundImage: `url('your-image.jpg')` }}>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-opacity-75"></div>
+      <div className="relative z-10 text-white text-center py-20">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold animate__animated animate__bounce">Welcome to Specialist Mathematics Classes</h1>
+        <p className="mt-4 text-lg md:text-xl animate__animated animate__fadeInUp">Nurturing young minds for a brighter future</p>
+        <button onClick={handleLoginClick} className="mt-8 bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-6 py-3 rounded-lg transition duration-300">
+          Join Us Today
+        </button>
+        <Link to="/about-us">
+          <button className="mt-8 ml-4 bg-white text-blue-500 font-bold px-6 py-3 rounded-lg shadow hover:bg-yellow-200 transition duration-300">
+            Learn More
+          </button>
+        </Link>
+      </div>
+    </header>
+
+    {/* Mobile Menu (Toggle visibility on mobile) */}
+    {menuOpen && (
+      <div className="md:hidden bg-blue-500 p-4 space-y-4">
+        <ul>
+          <li>
+            <Link to="/" className="text-white hover:text-yellow-300 block">Home</Link>
+          </li>
+          <li>
+            <Link to="/about-us" className="text-white hover:text-yellow-300 block">About Us</Link>
+          </li>
+          <li>
+            <a href="https://smcmathquiz.vercel.app/home" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300 block">Math Quiz</a>
+          </li>
+          <li>
+            <a href="https://smc-gk-gs-godda-izvcuorku-smcweb12s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-300 block">GK-GS</a>
+          </li>
+          <li>
+            <Link to="/courses" className="text-white hover:text-yellow-300 block">Courses</Link>
+          </li>
+          <li>
+            <button onClick={handleLoginClick} className="text-white hover:text-yellow-300 block">Login</button>
+          </li>
+        </ul>
+      </div>
+    )}
+  </div>
+);
+
 
       <Slideshow />
 
